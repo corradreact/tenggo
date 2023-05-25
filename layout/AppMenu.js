@@ -10,7 +10,10 @@ const AppMenu = () => {
     const model = [
         {
             label: 'MENU UTAMA',
-            items: [{ label: 'Bil', icon: 'pi pi-fw pi-home', to: '/bil' }]
+            items: [
+                { label: 'Bil', icon: 'pi pi-fw pi-home', to: '/bil' },
+                { label: 'Menu', icon: 'pi pi-fw pi-home', to: '/bil' }
+            ]
         },
         {
             label: 'Home',
