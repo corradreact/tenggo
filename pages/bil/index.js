@@ -1,62 +1,17 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { color } from '../../constants';
 
-const Crud = () => {
+const Crud = ({data}) => {
 
     const router                    = useRouter()
-    const [listbank, set_listbank]  = useState([])
+    const [listbank, set_listbank]  = useState(data.data.data)
 
     useEffect(() => {
-        hit_api()
+        console.log("DATA FROM getServerSideProps", data)
     }, [])
-
-    const hit_api = async () => 
-    {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({});
-
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
-
-        await fetch("https://toyyibpay.com/api/getBankFPX", requestOptions)
-        .then(response => response.json())
-        .then(result => {
-            console.log(result)
-
-            //CONDITION IF API TOYYIBPAY OKAY
-            if(result.length > 0) {
-                set_listbank(result)
-            }
-        })
-        .catch(error => console.log('error', error));
-    }
 
     return (
         <div className="grid crud-demo">
-
-            {/* <div className="col-12">
-                <div className="card bg-white">
-                    <div className='header'>
-                        <h6>Bil / Senarai bil</h6>
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-12 bg-secondary">
-                <div className="card" style={{ backgroundColor: color.primary }} onClick={() => router.push(`/`)}>
-                    <div className='header'>
-                        <h5 className='text-white text-bold'>Cukai Taksiran </h5>
-                        <span className='text-sm text-white'>Senarai bil cukai taksiran</span>
-                    </div>
-                </div>
-            </div> */}
 
             <div className="col-12 bg-secondary">
                 <div className="card bg-white w-full">
@@ -66,11 +21,15 @@ const Crud = () => {
                         <h5>Result Usestate</h5>
                    </div>
 
+                   {/* <div>
+                        <p>{JSON.stringify(data)}</p>
+                   </div> */}
+
                    <div>
                         {
                             listbank.length > 0 && listbank.map((item, index) => 
                                 <div key={index}>
-                                    <p>{index + 1}. Bank Name: {item.NAME}</p>
+                                    <p>{index + 1}. Bank Name: {item.referenceTitle}</p>
                                 </div>
                             )
                         }
@@ -82,5 +41,27 @@ const Crud = () => {
         </div>
     );
 };
+
+export async function getServerSideProps() {
+
+    let data;
+
+    try {
+        // Fetch data from your backend API
+        data = await fetch('http://localhost:3000/api/bill/create');
+        data = await data.json();
+
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        // Assign a default value or null when an error occurs
+        data = null;
+    }
+
+    return {
+        props: {
+            data,
+        },
+    };
+}
 
 export default Crud;
