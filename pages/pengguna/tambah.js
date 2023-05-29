@@ -5,7 +5,7 @@ import { InputText } from 'primereact/inputtext'
 import { InputTextarea } from 'primereact/inputtextarea'
 import React, { useState } from 'react'
 
-function tambah() {
+function Tambah() {
 
     const router                    = useRouter()
     const [loading, set_loading]    = useState(false);
@@ -92,4 +92,4 @@ function tambah() {
   )
 }
 
-export default tambah
+export default Tambah
