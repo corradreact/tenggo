@@ -6,7 +6,7 @@ import { DataTable } from 'primereact/datatable';
 import { Skeleton } from 'primereact/skeleton';
 import React, { useEffect, useState } from 'react'
 
-function index() {
+function Index() {
 
     const [list, set_list]          = useState([]);
     const [loading, set_loading]    = useState(true)
@@ -103,4 +103,4 @@ function index() {
     )
 }
 
-export default index
+export default Index

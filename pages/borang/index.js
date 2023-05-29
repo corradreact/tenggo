@@ -2,7 +2,7 @@ import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import React, { useState } from 'react'
 
-export default function index() {
+export default function Index() {
 
     const [username, set_username]  = useState("")
     const [email, set_email]        = useState("")
