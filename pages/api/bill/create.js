@@ -5,7 +5,7 @@ export default async function handler (req, res) {
     let result = null
     try {
 
-        let sql     = `SELECT * FROM reference LIMIT 5`;
+        let sql     = `SELECT * FROM teng LIMIT 5`;
         let execute = await db.query(sql);
 
         console.log("RESULT QUERY : ", execute)

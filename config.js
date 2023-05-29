@@ -4,10 +4,10 @@ const config = {
 		host: process.env.DEVELOPMENT_DBHOST,
 		user: process.env.DEVELOPMENT_DBUSERNAME,
 		password: process.env.DEVELOPMENT_DBPASSWORD,
-		database: process.env.STAGING_DBNAME,
+		database: process.env.DEVELOPMENT_DBNAME,
 		connectionLimit: 60
     },
     listPerPage: 10,
 };
 
-module.exports = config;
+module.exports = config

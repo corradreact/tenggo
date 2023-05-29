@@ -12,7 +12,8 @@ const AppMenu = () => {
             label: 'MENU UTAMA',
             items: [
                 { label: 'Bil', icon: 'pi pi-fw pi-home', to: '/bil' },
-                { label: 'Menu', icon: 'pi pi-fw pi-home', to: '/bil' }
+                { label: 'Borang Pendaftaran', icon: 'pi pi-fw pi-home', to: '/borang' },
+                { label: 'Senarai Pengguna', icon: 'pi pi-fw pi-users', to: '/pengguna' }
             ]
         },
         {
